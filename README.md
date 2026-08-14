@@ -1,4 +1,4 @@
-# Repositório para armazenar os Códigos de Atividades, Trabalhos e Aulas de Estrutura de Dados
+# Repositório Estrutura de Dados
 > Matéria Lecionada pelo Professor Me. Thiago A. Silva \
 > @tiagotas
 ---
