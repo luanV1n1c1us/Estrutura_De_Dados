@@ -3,8 +3,9 @@
 > @tiagotas
 ---
 
-| ![logo fatec](./assets/readmImages\logoFatec.png) | | ![logo dsm](./assets/readmImages\logoDSM.png) |
+  | ![logo fatec](https://github.com/luanV1n1c1us/Estrutura_De_Dados/blob/main/assets/readImages/logoFatec.png) | | ![logo dsm](https://github.com/luanV1n1c1us/Estrutura_De_Dados/blob/main/assets/readImages/logoDSM.png)|
 | :---: |---| :---: |
+
 
 Este reposítorio serve para eu deixar todos os códigos relacionados a matéria de Estrutura de dados ele terá a seguinte estrutura de organização
 
