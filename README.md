@@ -3,7 +3,7 @@
 > @tiagotas
 ---
 
-| ![logo fatec](./assets/readmImages\logoFatec) | | ![logo dsm](./assets/readmImages\ldsm) |
+| ![logo fatec](./assets/readmImages\logoFatec.png) | | ![logo dsm](./assets/readmImages\logoDSM.png) |
 | :---: |---| :---: |
 
 Este reposítorio serve para eu deixar todos os códigos relacionados a matéria de Estrutura de dados ele terá a seguinte estrutura de organização
