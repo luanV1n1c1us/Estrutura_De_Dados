@@ -11,9 +11,9 @@ Este reposítorio serve para eu deixar todos os códigos relacionados a matéria
 
 - Tipo do código (trabalho, exercício, aula, etc...)
   - Aula/trabalho do código
-    - código 1
+    - Exercicio 1
       - arquivos do código 1
-    - código 2
+    - Exercicio 2
       - arquivos do código 1
     - ...
 
