@@ -132,7 +132,7 @@ class MyArray {
         })
     }
     // Este método encontra duplicatas no meu array e retorna uma matriz com os index de cada duplicata de cada valor diferente que foi encontrado no meu array;
-    isDuplicated() {
+    isDuplicated(key, type) {
         // Armazenamento que recebera o array com a posição de cada duplicata encontrada na estrutura;
         const duplicatageStorageMatriz = [];
         // Itens que foram duplicados serão armazenados aqui para evitar iteração sobre as duplicações destes itens;
@@ -151,11 +151,31 @@ class MyArray {
                 for (let y = 0; y < this.#size; y++) {
                     // Verifica se o elemento não é o mesmo que já esta no array;
                     if ((!(y == index))) {
+                        if (key) {
+                            if (this.#structure[y][key] == item[key]) {
+                                // Adiciona o index da Copia no array de Execução
+                                duplicatageStorageExecution.push(y)
+                                // Verifica se o valor esta no Array de itens para não ser repetidos
+                                if (!dontRepitethisItens.includes(item)) {
+                                    // Adiciona o valor ao Array;
+                                    dontRepitethisItens.push(item);
+                                }
+                            } else {
+                                // Verifica se é uma array
+                                if (type) {
+
+                                }
+                            }
+                        }
                         // Verifica se o elemento é uma duplicata;
                         if (this.#structure[y] == item) {
                             // Adiciona o index da Copia no array de Execução
                             duplicatageStorageExecution.push(y)
-                            dontRepitethisItens.push(item);
+                            // Verifica se o valor esta no Array de itens para não ser repetidos
+                            if (!dontRepitethisItens.includes(item)) {
+                                // Adiciona o valor ao Array;
+                                dontRepitethisItens.push(item);
+                            }
                         };
                     };
                 };
@@ -191,6 +211,44 @@ class MyArray {
         } else console.log("Não houve duplicatas")
 
     };
+    insertItemIn(element, index) {
+        // Função que verifica se o index é válido, se for Executa uma callBack;
+        this.#indexIsValid(index, () => {
+            // Variavel que recebe o valor que estava no local que ira receber o novo elemento;
+            let beforeValue;
+            // Variavel que recebe o novo elemento que irá no local;
+            let afterValue = element;
+            // Iteração que percorre o Array;
+            for (let i = 0; i <= this.#size; i++) {
+                // Verifica se o index da iteração atual é o desejado, se for:
+                if (i == index) {
+                    // Pega o valor que estava naquela posição;
+                    beforeValue = this.#structure[i];
+                    // Coloca o novo valor nessa posição;
+                    this.#structure[i] = afterValue;
+                    // Coloca o antigo valor como o valor que irá na próxima posição na proxima iteração;
+                    afterValue = beforeValue;
+                }
+                // Verifica se não é a execução depois do index desejado, visto que só organizaremos o array apartir dele; Se for:
+                if (i > index) {
+                    // Pega o valor que estava naquela posição;
+                    beforeValue = this.#structure[i];
+                    // Coloca o novo valor nessa posição;
+                    this.#structure[i] = afterValue;
+                    // Coloca o antigo valor como o valor que irá na próxima posição na proxima iteração;
+                    afterValue = beforeValue;
+                }
+            }
+            // Altera o atributo que controla o tamanho do nosso array;
+            this.#size++
+        })
+    }
+    removeThisItemIn(index) {
+        this.#indexIsValid(index, () => {
+            // Deleta o item em específico;
+            delete this.#structure[index]
+        })
+    }
 };
 module.exports = MyArray;
 
