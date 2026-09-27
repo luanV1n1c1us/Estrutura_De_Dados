@@ -131,9 +131,67 @@ class MyArray {
             })
         })
     }
+    // Este método encontra duplicatas no meu array e retorna uma matriz com os index de cada duplicata de cada valor diferente que foi encontrado no meu array;
+    isDuplicated() {
+        // Armazenamento que recebera o array com a posição de cada duplicata encontrada na estrutura;
+        const duplicatageStorageMatriz = [];
+        // Itens que foram duplicados serão armazenados aqui para evitar iteração sobre as duplicações destes itens;
+        const dontRepitethisItens = [];
+        // Iteração que pega o item que será verificado se há duplicatas dele no array;
+        for (let i = 0; i < this.#size; i++) {
+            // Armazenamento das duplicadas em tempo de execução da iteração;
+            let duplicatageStorageExecution = [];
+            // Pega o index que será verificado
+            let item = this.#structure[i];
+            // Pega o index deste item;
+            let index = this.getIndex(item);
+            // Verifica se o item atual ja foi encontrado suas duplicatas;
+            if (!dontRepitethisItens.includes(item))
+                // Segunda iteração que faz a verificação do array inteiro
+                for (let y = 0; y < this.#size; y++) {
+                    // Verifica se o elemento não é o mesmo que já esta no array;
+                    if ((!(y == index))) {
+                        // Verifica se o elemento é uma duplicata;
+                        if (this.#structure[y] == item) {
+                            // Adiciona o index da Copia no array de Execução
+                            duplicatageStorageExecution.push(y)
+                            dontRepitethisItens.push(item);
+                        };
+                    };
+                };
+            // Verifica se o array de duplicatas de execução não esta vazio para não adicionarmos arrays vazios na nossa matriz;
+            if (duplicatageStorageExecution.length > 0) {
+                // Adiciona o array de duplicatas de execução 
+                duplicatageStorageMatriz.push(duplicatageStorageExecution)
+            };
+        };
+        // Verifica se a algo para retornar do processo na matriz se tiver retorna a própria matriz, senão retornar -1
+        if (duplicatageStorageMatriz.length > 0) {
+            return duplicatageStorageMatriz;
+        } else return -1;
+    };
+    showDuplicateds() {
+        // Executa a função para procurar duplicatas
+        let duplicateds = this.isDuplicated()
+        // Verifica se há duplicatas
+        if (!(duplicateds == -1)) {
+            // Itera sobre a matriz de duplicats
+            duplicateds.forEach((item) => {
+                console.log(`O item: ${this.#structure.at(item[0])}, esta repetido nas seguintes posições`)
+                item.forEach((index) => console.log(index))
+            })
+        }
+    };
+    deletDuplicated() {
+        // Recebe as duplicatas;
+        let duplicateds = this.isDuplicated();
+        // Verifica se houve duplicatas 
+        if (!(duplicateds == -1)) {
+            duplicateds.forEach((duplicatedArray) => duplicatedArray.forEach((index) => delete this.#structure[index]))
+        } else console.log("Não houve duplicatas")
+
+    };
 };
 module.exports = MyArray;
 
 
-//  D A B C
-// 0 1 2
